@@ -1,8 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var discord = require('../public/javascripts/discordTest.js');
+
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
+
+  await discord.main();
+
   res.render('index', { title: 'Express' });
 });
 

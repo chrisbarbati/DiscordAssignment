@@ -12,7 +12,6 @@ logs/
 dist/
 
 # Dependency lock files
-package-lock.json
 yarn.lock
 
 # IDE files
