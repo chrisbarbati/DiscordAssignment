@@ -5,7 +5,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
+// Add the router for tasks
+var tasksRouter = require('./routes/tasks');
 var usersRouter = require('./routes/users');
+
+// Import mongoose
+
+var mongoose = require('mongoose');
+//var configs = require('./configs/globals'); // Commented out for now, not in use and breaks the app. //TODO: Revisit this
 
 var app = express();
 
@@ -20,7 +27,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+// Use the router for tasks
 app.use('/users', usersRouter);
+app.use('/tasks', tasksRouter);
+
+// Connect to MongoDB
+mongoose.connect('mongodb+srv://200390696:3H479oIv1FLYfuZu@discordassignment.vcryjkk.mongodb.net/?retryWrites=true&w=majority&appName=DiscordAssignment').then( // TODO: Use the globals variable for this later. Leaving it as plain-text is poor practice
+  () => {console.log('Connected to MongoDB')},
+  err => {console.error('Error connecting to MongoDB')}
+);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var DiscordBot = require('../public/javascripts/discordBot.js');
+var DiscordBot = require('../models/discordBot.js');
 
 var bot; //Holds our bot
 
@@ -11,6 +11,7 @@ router.get('/', async function(req, res, next) {
     //Wait until DiscordBot is constructed and client and channel are set before sending a message
     await bot.init();
   }
+
   res.render('index', { title: 'Express' });
 });
 
@@ -26,5 +27,7 @@ router.post('/sendmessage', async function(req, res, next) {
 
   res.render('index', { title: 'Express' });
 });
+
+
 
 module.exports = router;
