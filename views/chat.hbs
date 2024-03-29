@@ -1,9 +1,12 @@
-<h1>Send a Discord message: </h1>
 
-<form action="/sendmessage" method="post">
+<body class="chatBody">
+    <div class="chatContainer">
+      <h1 class="chatBox"> Send a Discord message</h1>
+        <form>
+            <input type="text" name="message" placeholder="Enter your message...">
+            <br>
+            <button class="buttonChat" type="submit">Send</button>
+        </form>
+    </div>
+</body>
 
-  <input type="text" name="message" placeholder="Message">
-
-  <button type="submit">Send</button>
-
-</form>

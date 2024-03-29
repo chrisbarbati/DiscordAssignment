@@ -20,6 +20,12 @@ router.get('/sendmessage', async function(req, res, next) {
   res.render('chat', { title: 'Chat' });
 });
 
+/* GET chat page. */
+router.get('/chat', async function(req, res, next) {
+  res.render('chat', { title: 'Discord Application' });
+});
+
+
 //Accept a post request and send a message to the Discord channel
 router.post('/sendmessage', async function(req, res, next) {
   if(!bot){
