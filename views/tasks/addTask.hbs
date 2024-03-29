@@ -1,22 +1,22 @@
-<h1>{{title}}</h1>
+<body class="addTaskBody">
+  
+<h1 class="addTaskTitle">{{title}}</h1>
 
-<!-- Simple form to add a new Task to the database -->
+<!-- Form to add a new Task to the database -->
 
-<form action="/tasks/add" method="POST">
+<form class="addTaskForm" action="/tasks/add" method="POST">
 
-  <input type="text" name="name" placeholder="Name">
-
-  <input type="text" name="description" placeholder="Description">
-
-  <input type="text" name="message" placeholder="Message">
-
-  <select name="interval"> <!-- Add more intervals later. Text can be whatever we would like (eg. 3 hours) but value must be expressed in minutes (eg. 180) -->
+  <select name="interval"> 
       <option value="5">5 minutes</option>
       <option value="10">10 minutes</option>
       <option value="30">30 minutes</option>
       <option value="60">60 minutes</option>
   </select>
 
-  <button type="submit">Add Task</button>
+  <input type="text" name="description" placeholder="Description">
+  <input type="text" name="message" placeholder="Message">
+  <input type="text" name="name" placeholder="Name">
+  <button class="buttonAddPage" type="submit">Add Task</button>
   
 </form>
+</body>
