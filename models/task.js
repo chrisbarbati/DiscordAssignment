@@ -1,5 +1,11 @@
 const mongoose = require('mongoose');
 
+/*
+    Model for a Task object to be stored in the database.
+
+    A task represents a message that should be sent to the chat at a certain time.
+*/
+
 const taskSchemaObj = {
     name: { type: String, required: true },
     description: { type: String, required: false}, //Description is optional

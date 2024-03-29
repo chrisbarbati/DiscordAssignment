@@ -6,13 +6,18 @@ var bot; //Holds our bot
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
+  res.render('index', { title: 'Discord Application' });
+});
+
+/* GET home page. */
+router.get('/sendmessage', async function(req, res, next) {
   if(!bot){
     bot = new DiscordBot();
     //Wait until DiscordBot is constructed and client and channel are set before sending a message
     await bot.init();
   }
 
-  res.render('index', { title: 'Express' });
+  res.render('chat', { title: 'Chat' });
 });
 
 //Accept a post request and send a message to the Discord channel
@@ -25,7 +30,7 @@ router.post('/sendmessage', async function(req, res, next) {
     bot.sendMessage(req.body.message);
   }
 
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Chat' });
 });
 
 

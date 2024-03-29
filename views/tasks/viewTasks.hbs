@@ -6,10 +6,12 @@
 {{#each tasks}}
 <div class="task">
     <h2>{{title}}</h2>
+
     <p>{{description}}</p>
     <p>{{date}}</p>
     <p>{{message}}</p>
     <p>{{interval}}</p>
+    
     <a href="/tasks/edit/{{_id}}">Edit</a>
     <a href="/tasks/delete/{{_id}}">Delete</a>
 </div>
@@ -20,4 +22,5 @@
 <br>
 <br>
 <br>
+
 <a href="/tasks/add">Add Task</a>
