@@ -9,8 +9,10 @@ var indexRouter = require('./routes/index');
 var tasksRouter = require('./routes/tasks');
 var usersRouter = require('./routes/users');
 
-// Import mongoose
+// Import scheduler service
+var scheduler = require('./services/scheduler');
 
+// Import mongoose
 var mongoose = require('mongoose');
 //var configs = require('./configs/globals'); // Commented out for now, not in use and breaks the app. //TODO: Revisit this
 

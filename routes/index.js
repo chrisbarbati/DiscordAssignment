@@ -9,7 +9,7 @@ router.get('/', async function(req, res, next) {
   res.render('index', { title: 'Discord Application' });
 });
 
-/* GET home page. */
+
 router.get('/sendmessage', async function(req, res, next) {
   if(!bot){
     bot = new DiscordBot();
