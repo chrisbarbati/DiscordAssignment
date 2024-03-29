@@ -114,3 +114,164 @@ time, mark, audio, video {
   background-color: rgb(47, 161, 218);
   color: white;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Style for Tasks page */
+.bodyTasks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  background-image: url('/stylesheets/photo\ 1.png'); 
+  background-size: cover;
+  background-position: center;
+}
+
+.containerTasks{
+  overflow: scroll; 
+}
+
+
+
+
+
+
+/* Styling the title of view task page */
+.TasksTitle {
+  text-align: center;
+  margin: 20px;
+  color: white;
+  font-size: 45pt;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+
+
+
+
+/* Styling each task box */
+.task {
+  border: 2px solid #333;
+  border-radius: 9px;
+  padding: 40px;
+  margin: 10px auto;
+  width: 600px;
+  background-color: rgba(46, 144, 193, 9);
+  color: white; 
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  overflow: scroll;
+}
+
+
+
+
+
+
+/* Styling data in the boxes */
+.task p {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.task p span{
+  color: black;
+}
+
+
+
+
+
+
+/* Styling data in the buttons */
+.task a {
+  display: block;
+  margin-top: 10px;
+  text-decoration: none;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+  text-align: center;
+  width: 80px;
+}
+
+.task a:hover {
+  background-color: #555;
+}
+
+
+
+
+
+
+/* Styling the "Add Task" button */
+.addTaskContainer {
+  margin-top: 10px;
+  padding: 30px; 
+  background-color: #4477e4;
+  border-radius: 2%;
+  display: flex;
+  justify-content: center; 
+  align-items: center;  
+}
+
+.addTaskContainer a {
+  color: yellow;
+  text-decoration: none;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 24px; 
+  color: white;
+}
+
+.addTaskContainer:hover {
+  background-color: #0f295c;
+}
+
+.addTaskTitle {
+  text-align: center;
+  margin-top: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  position: absolute;
+  font-size: 35pt;
+  top: 50px; 
+  color: white;
+}
+
+.addTaskForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 40px;
+  width: 60%;
+}
+
+.addTaskForm select,
+.addTaskForm input[type="text"],
+.addTaskForm button {
+  margin-bottom: 15px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.buttonAddPage{
+  background-color: rgb(47, 161, 218);
+  color: white;
+}
+
+
+
