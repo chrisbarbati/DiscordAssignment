@@ -6,8 +6,6 @@ const DiscordBot = require('../models/discordBot');
     Handles the scheduling of tasks.
 
     Simple demonstration for now
-
-    TODO: Implement actual task scheduling functionality for all tasks in the database, and refresh the schedule when tasks are added/removed/edited
 */
 
 // Get all tasks from the database, and schedule them to run at the specified intervals

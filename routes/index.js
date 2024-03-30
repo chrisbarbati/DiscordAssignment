@@ -1,42 +1,47 @@
 var express = require('express');
 var router = express.Router();
 var DiscordBot = require('../models/discordBot.js');
+var Message = require('discord.js').Message;
 
-var bot; //Holds our bot
+var bot = new DiscordBot; //Holds our bot
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
+  if(!bot.initialized){
+    //Wait until DiscordBot is constructed and client and channel are set before sending a message
+    await bot.init();
+  }
+
   res.render('index', { title: 'Discord Application' });
 });
 
 
-router.get('/sendmessage', async function(req, res, next) {
-  if(!bot){
-    bot = new DiscordBot();
+router.get('/chat', async function(req, res, next) {
+  if(!bot.initialized){
     //Wait until DiscordBot is constructed and client and channel are set before sending a message
     await bot.init();
   }
 
-  res.render('chat', { title: 'Chat' });
-});
+  var messagesList = await bot.getMessages();
+  
+  for(let message of messagesList){
+    //console.log(message.content);
+  }
 
-/* GET chat page. */
-router.get('/chat', async function(req, res, next) {
-  res.render('chat', { title: 'Discord Application' });
+  res.render('chat', { title: 'Chat', messages: messagesList });
 });
 
 
 //Accept a post request and send a message to the Discord channel
-router.post('/sendmessage', async function(req, res, next) {
-  if(!bot){
-    bot = new DiscordBot();
+router.post('/chat', async function(req, res, next) {
+  if(!bot.initialized){
     //Wait until DiscordBot is constructed and client and channel are set before sending a message
     await bot.init();
-  }else{
-    bot.sendMessage(req.body.message);
   }
+  
+  await bot.sendMessage(req.body.message);
 
-  res.render('index', { title: 'Chat' });
+  res.redirect('/chat');
 });
 
 

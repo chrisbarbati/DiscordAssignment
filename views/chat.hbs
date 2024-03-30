@@ -2,7 +2,16 @@
 <body class="chatBody">
     <div class="chatContainer">
       <h1 class="chatBox"> Send a Discord message</h1>
-        <form>
+        <div class="chatBox">
+            <h2>Messages</h2>
+            <div class="">
+                <ul>
+                    {{#each messages}}
+                        <li>{{this.sender}}, {{this.content}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        <form action="/chat" method="POST">
             <input type="text" name="message" placeholder="Enter your message...">
             <br>
             <button class="buttonChat" type="submit">Send</button>
