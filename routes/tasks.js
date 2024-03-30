@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Task = require('../models/task');
+const scheduler = require('../services/scheduler');
 
 /*
     Routes for the tasks page and subpages

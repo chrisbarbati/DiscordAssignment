@@ -11,6 +11,7 @@ var usersRouter = require('./routes/users');
 
 // Import scheduler service
 var scheduler = require('./services/scheduler');
+scheduler; // Start the scheduler
 
 // Import mongoose
 var mongoose = require('mongoose');
