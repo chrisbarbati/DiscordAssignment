@@ -5,8 +5,8 @@
 <!-- Get all tasks from the database and display their information -->
 
 
-{{#each tasks}}
 <div class="containerTasks">
+{{#each tasks}}
 <div class="task">
     <h2>{{this.title}}</h2>
     <p><span>Name:</span>  {{this.name}}</p>
@@ -18,7 +18,6 @@
     <a href="/tasks/delete/{{this._id}}">Delete</a>
 </div>
 {{/each}}
-
 </div>
 
 <div class="addTaskContainer">
@@ -26,7 +25,6 @@
 </div>
 <div class="addTaskContainer">
      <a href="/">Back</a>
-
 </div>
 
 

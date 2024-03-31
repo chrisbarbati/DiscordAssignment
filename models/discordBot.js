@@ -23,7 +23,7 @@ class DiscordBot {
 
     // Initialize the bot
     async init() {
-        this.client = new Client({ intents: [GatewayIntentBits.MessageContent] });
+        this.client = new Client({ intents: [GatewayIntentBits.MessageContent] }); // This intent is required for the bot to see the content of messages it did not send
         await this.client.login(this.token);
 
         await this.client.once('ready', () => {
@@ -53,11 +53,6 @@ class DiscordBot {
 
     async sendMessage(message){
 
-        // Takes time to reinitialize the bot every time the message is sent, but I encountered periodic issues otherwise. //TODO: Investigate this further
-        
-        //await this.init();
-        //await this.setChannel();
-
         await this.channel.send(message)
         .then(message => console.log(`Sent message: ${message.content}`))
         .catch(console.error);
@@ -65,12 +60,7 @@ class DiscordBot {
 
     async getMessages(){
 
-        //TODO: See above
-
-        //await this.init();
-        //await this.setChannel();
-
-        const messagesList = await this.channel.messages.fetch({ limit: 10 });
+        const messagesList = await this.channel.messages.fetch();
 
         var messages = [];
 
@@ -84,6 +74,14 @@ class DiscordBot {
         messages.reverse();
 
         return messages;
+    }
+
+    // Accepts an image url and sends it to the channel
+    async sendImage(imgUrl){
+        
+        const args = {files: [imgUrl]};
+
+        await this.channel.send(args)
     }
 }
 

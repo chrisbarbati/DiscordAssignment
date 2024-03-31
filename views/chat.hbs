@@ -1,24 +1,64 @@
 
-<body class="chatBody">
+<body class="chatBody" data-messages="{{json messages}}"> <!-- Add a data attribute to let us access the messages passed from the router -->
     <div class="chatContainer">
       <h1 class="chatBox"> Send a Discord message</h1>
         <div class="chatBox">
-            <h2>Messages</h2>
-            <div>
-                <ul>
-                    {{#each messages}}
-                        <li>{{this.sender}}, {{this.content}}</li>
-                    {{/each}}
-                </ul>
+            <div class="chatBoxWindow">
+                    <!--{{#each messages}}
+                        <div class="message">{{this.sender}}, {{this.content}}</div>
+                    {{/each}}-->
             </div>
         <div  class="chatForm">
             <form action="/chat" method="POST">
                 <input type="text" name="message" placeholder="Enter your message...">
                 <br>
                 <button class="buttonChat" type="submit">Send</button>
-                 <button class="buttonChat"><a href="/">Back</a></button>
             </form>
+                <button class="buttonChat"><a href="/">Back</a></button>
         </div>
     </div>
 </body>
 
+<script>
+    
+    var chatWindow = document.querySelector('.chatBoxWindow');
+
+    // Get all messages passed from the router and store them in a local variable
+    var messages = JSON.parse(document.body.dataset.messages);
+
+    // For each message, create a new div element and append it to the chat window
+    for (var i = 0; i < messages.length; i++) {
+        // Get the current message
+        var message = messages[i];
+
+        // Create a new div element to display the message, and set its text content to the message content
+        var messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.textContent = message.content;
+        
+        // Each message needs to be wrapped in a div to display the sender's name
+        var messageWrapperDiv = document.createElement('div');
+        messageWrapperDiv.classList.add('messageWrapper');
+
+        // Create a new div element to display the sender's name, and set its text content to the sender's name
+        var sender = document.createElement('div');
+        sender.textContent = message.sender;
+
+        // Append the sender and message divs to the message wrapper div
+        messageWrapperDiv.appendChild(sender);
+        messageWrapperDiv.appendChild(messageDiv);
+
+        // Align the message to left or right depending on sender. 
+        if (message.sender === 'JSAssignmentBot') {
+            messageWrapperDiv.style.setProperty('align-self', 'flex-end');
+        } else {
+            messageWrapperDiv.style.setProperty('align-self', 'flex-start');
+        }
+
+        
+        chatWindow.appendChild(messageWrapperDiv);
+    }
+
+    // Scroll to the bottom of the chat window
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+</script>

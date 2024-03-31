@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var hbs = require('hbs'); // Required for below helper functions
 
 var indexRouter = require('./routes/index');
 // Add the router for tasks
@@ -16,6 +17,11 @@ scheduler; // Start the scheduler
 // Import mongoose
 var mongoose = require('mongoose');
 //var configs = require('./configs/globals'); // Commented out for now, not in use and breaks the app. //TODO: Revisit this
+
+// Creates a hbs helper to convert a variable to JSON so we can access it client-side in the hbs file. Used to create the messages dynamically
+hbs.registerHelper('json', function(context) {
+  return JSON.stringify(context);
+});
 
 var app = express();
 
@@ -39,6 +45,7 @@ mongoose.connect('mongodb+srv://200390696:3H479oIv1FLYfuZu@discordassignment.vcr
   () => {console.log('Connected to MongoDB')},
   err => {console.error('Error connecting to MongoDB')}
 );
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

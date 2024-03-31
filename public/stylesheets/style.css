@@ -146,7 +146,7 @@ time, mark, audio, video {
 }
 
 .containerTasks{
-  overflow: scroll; 
+  overflow-y: scroll; 
 }
 
 
@@ -173,12 +173,12 @@ time, mark, audio, video {
   border: 2px solid #333;
   border-radius: 9px;
   padding: 40px;
-  margin: 10px auto;
+  margin: 2em;
   width: 600px;
   background-color: rgba(46, 144, 193, 9);
   color: white; 
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  overflow: scroll;
+  /*overflow-y: scroll;*/
 }
 
 
@@ -314,6 +314,29 @@ time, mark, audio, video {
   font-size: 15pt;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   margin-bottom: 50px;
+}
+/* Added style for the chat box window showing the past messages  - Christian */
+.chatBoxWindow {
+  background-color: rgba(188, 188, 188, 0.8);
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Can be used to align a message left / right. flex-start -> left, flex-end -> right */
+  overflow-y: scroll;
+}
+/* Added style for the messages  - Christian */
+.message {
+  background-color: rgba(0, 68, 255, 0.8);
+  color:rgba(188, 188, 188, 0.8);
+  border-radius: 1em;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+.messageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
 }
 .chatContainer {
   background-color: rgb(32, 77, 129); 

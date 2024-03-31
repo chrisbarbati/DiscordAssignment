@@ -4,20 +4,22 @@
 
 <!-- Form to add a new Task to the database -->
 
-<form class="addTaskForm" action="/tasks/add" method="POST">
+<div class="addTaskForm">
+  <form action="/tasks/add" method="POST">
 
-  <select name="interval"> 
-      <option value="5">5 minutes</option>
-      <option value="10">10 minutes</option>
-      <option value="30">30 minutes</option>
-      <option value="60">60 minutes</option>
-  </select>
+    <select name="interval" required> 
+        <option value="5">5 minutes</option>
+        <option value="10">10 minutes</option>
+        <option value="30">30 minutes</option>
+        <option value="60">60 minutes</option>
+    </select>
 
-  <input type="text" name="description" placeholder="Description">
-  <input type="text" name="message" placeholder="Message">
-  <input type="text" name="name" placeholder="Name">
-  <button class="buttonAddPage" type="submit">Add Task</button>
-  <button class="buttonAddPage"><a href="/">Back</a></button>
+    <input type="text" name="description" placeholder="Description" required>
+    <input type="text" name="message" placeholder="Message" required>
+    <input type="text" name="name" placeholder="Name" required>
+    <button class="buttonAddPage" type="submit">Add Task</button>
+  </form>
+    <button class="buttonAddPage" style="width: 60%; "><a href="/tasks">Back</a></button>
+</div>
 
-</form>
 </body>
