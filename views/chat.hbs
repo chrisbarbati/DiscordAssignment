@@ -26,38 +26,47 @@
     // Get all messages passed from the router and store them in a local variable
     var messages = JSON.parse(document.body.dataset.messages);
 
-    // For each message, create a new div element and append it to the chat window
-    for (var i = 0; i < messages.length; i++) {
-        // Get the current message
-        var message = messages[i];
+    function populateMessages(){
+        // Clear the chat window before displaying the messages
+        chatWindow.innerHTML = '';
 
-        // Create a new div element to display the message, and set its text content to the message content
-        var messageDiv = document.createElement('div');
-        messageDiv.classList.add('message');
-        messageDiv.textContent = message.content;
-        
-        // Each message needs to be wrapped in a div to display the sender's name
-        var messageWrapperDiv = document.createElement('div');
-        messageWrapperDiv.classList.add('messageWrapper');
+        // For each message, create a new div element and append it to the chat window
+        for (var i = 0; i < messages.length; i++) {
+            // Get the current message
+            var message = messages[i];
 
-        // Create a new div element to display the sender's name, and set its text content to the sender's name
-        var sender = document.createElement('div');
-        sender.textContent = message.sender;
+            // Create a new div element to display the message, and set its text content to the message content
+            const messageContent = message.content;
 
-        // Append the sender and message divs to the message wrapper div
-        messageWrapperDiv.appendChild(sender);
-        messageWrapperDiv.appendChild(messageDiv);
+            var messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.textContent = messageContent;
+            
+            // Each message needs to be wrapped in a div to display the sender's name
+            var messageWrapperDiv = document.createElement('div');
+            messageWrapperDiv.classList.add('messageWrapper');
 
-        // Align the message to left or right depending on sender. 
-        if (message.sender === 'JSAssignmentBot') {
-            messageWrapperDiv.style.setProperty('align-self', 'flex-end');
-        } else {
-            messageWrapperDiv.style.setProperty('align-self', 'flex-start');
+            // Create a new div element to display the sender's name, and set its text content to the sender's name
+            var sender = document.createElement('div');
+            sender.textContent = message.sender;
+
+            // Append the sender and message divs to the message wrapper div
+            messageWrapperDiv.appendChild(sender);
+            messageWrapperDiv.appendChild(messageDiv);
+
+            // Align the message to left or right depending on sender. 
+            if (message.sender === 'JSAssignmentBot') {
+                messageWrapperDiv.style.setProperty('align-self', 'flex-end');
+            } else {
+                messageWrapperDiv.style.setProperty('align-self', 'flex-start');
+            }
+            
+            chatWindow.appendChild(messageWrapperDiv);
         }
-
-        
-        chatWindow.appendChild(messageWrapperDiv);
     }
+
+    // Call the populateMessages function to display the messages
+    populateMessages();
 
     // Scroll to the bottom of the chat window
     chatWindow.scrollTop = chatWindow.scrollHeight;

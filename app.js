@@ -16,7 +16,7 @@ scheduler; // Start the scheduler
 
 // Import mongoose
 var mongoose = require('mongoose');
-//var configs = require('./configs/globals'); // Commented out for now, not in use and breaks the app. //TODO: Revisit this
+var configs = require('./configs/globals');
 
 // Creates a hbs helper to convert a variable to JSON so we can access it client-side in the hbs file. Used to create the messages dynamically
 hbs.registerHelper('json', function(context) {
@@ -41,11 +41,10 @@ app.use('/users', usersRouter);
 app.use('/tasks', tasksRouter);
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://200390696:3H479oIv1FLYfuZu@discordassignment.vcryjkk.mongodb.net/?retryWrites=true&w=majority&appName=DiscordAssignment').then( // TODO: Use the globals variable for this later. Leaving it as plain-text is poor practice
+mongoose.connect(configs.ConnectionStrings.MongoDB).then(
   () => {console.log('Connected to MongoDB')},
   err => {console.error('Error connecting to MongoDB')}
 );
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

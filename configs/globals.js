@@ -10,7 +10,6 @@ const configurations = {
         Token: process.env.DISCORD_TOKEN,
         Client: process.env.DISCORD_CLIENT,
         ChannelID: process.env.DISCORD_CHANNEL_ID
-
     }
 };
 

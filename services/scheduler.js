@@ -1,6 +1,6 @@
 const schedule = require('node-schedule');
 const Task = require('../models/task');
-const DiscordBot = require('../models/discordBot');
+const bot = require('../models/discordBot');
 
 /*
     Handles the scheduling of tasks.
@@ -11,7 +11,6 @@ const DiscordBot = require('../models/discordBot');
 // Get all tasks from the database, and schedule them to run at the specified intervals
 async function scheduleTasks() {
 
-  bot = new DiscordBot();
   await bot.init();
 
   var tasks = await Task.find();
