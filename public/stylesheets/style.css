@@ -17,6 +17,9 @@ time, mark, audio, video {
     border: 0;
     vertical-align: baseline;
 }
+
+
+
 /*  Styling for index (main page)*/
 .bodyHomepage {
   margin: 0;
@@ -113,6 +116,9 @@ time, mark, audio, video {
 .buttonAddPage{
   background-color: rgb(47, 161, 218);
   color: white;
+}
+.buttonAddPage>a{
+  text-decoration: none;
 }
 
 
@@ -299,9 +305,13 @@ time, mark, audio, video {
   background-position: center;
   background-repeat: no-repeat;
 }
+.chatBox>h2{
+  padding-bottom: 30px;
+  color: black;
+}
 .chatBox{
   color:white;
-  font-size: 30pt;
+  font-size: 15pt;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   margin-bottom: 50px;
 }
@@ -327,7 +337,7 @@ input[type="text"] {
  .buttonChat {
   padding: 10px 50px;
   border: none;
-  margin-top: 20px;
+  margin-top: 40px;
   border-radius: 5px;
   background-color: white; 
   color: rgb(1, 1, 13); 
@@ -335,6 +345,18 @@ input[type="text"] {
   font-size: 20pt; 
  }
 
+ .buttonChat>a{
+  text-decoration: none;
+ }
+
 button:hover {
   background-color: lightblue; 
 }
+
+.chatForm{
+  padding: 20px;
+  margin-top: 23px;
+}
+
+
+
