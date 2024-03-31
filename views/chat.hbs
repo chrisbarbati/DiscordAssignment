@@ -1,12 +1,9 @@
 
 <body class="chatBody" data-messages="{{json messages}}"> <!-- Add a data attribute to let us access the messages passed from the router -->
     <div class="chatContainer">
-      <h1 class="chatBox"> Send a Discord message</h1>
+      <h1 class="chatBox">Discord Chat</h1>
         <div class="chatBox">
             <div class="chatBoxWindow">
-                    <!--{{#each messages}}
-                        <div class="message">{{this.sender}}, {{this.content}}</div>
-                    {{/each}}-->
             </div>
         <div  class="chatForm">
             <form action="/chat" method="POST">
@@ -14,7 +11,9 @@
                 <br>
                 <button class="buttonChat" type="submit">Send</button>
             </form>
-                <button class="buttonChat"><a href="/">Back</a></button>
+            <form action="/" method="GET">
+                <button class="buttonChat">Back</button>
+            </form>
         </div>
     </div>
 </body>

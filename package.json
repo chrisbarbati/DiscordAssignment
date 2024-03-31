@@ -19,6 +19,7 @@
     "http-errors": "~1.6.3",
     "mongoose": "^8.2.4",
     "morgan": "~1.9.1",
-    "node-schedule": "^2.1.1"
+    "node-schedule": "^2.1.1",
+    "openai": "^4.31.0"
   }
 }

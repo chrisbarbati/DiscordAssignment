@@ -3,6 +3,9 @@ var GatewayIntentBits = require('discord.js').GatewayIntentBits;
 var Message = require('./message.js');
 const configs = require('../configs/globals');
 const send = require('send');
+const { OpenAI } = require('openai');
+
+const openai = new OpenAI();
 
 /*
     Object-oriented representation of a Discord bot, using the discord.js library.
@@ -11,8 +14,6 @@ const send = require('send');
     is a good way to separate the logic and make the application more extensible in the future (eg. one server, multiple bots)
 
     Implementation adapted from https://discord.js.org/docs/packages/discord.js/14.14.1
-    
-    
 */
 
 class DiscordBot {
@@ -33,7 +34,7 @@ class DiscordBot {
 
     // Initialize the bot
     async init() {
-        this.client = new Client({ intents: [GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessageReactions]}); // This intent is required for the bot to see the content of messages it did not send itself
+        this.client = new Client({ intents: [GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessageReactions]}); // These intents represent the permissions of the bot
         await this.client.login(this.token);
 
         await this.client.once('ready', () => {
@@ -44,15 +45,29 @@ class DiscordBot {
 
         this.initialized = true;
 
-        // Configures the client to listen for messages and respond.
+        // Configures the client to listen for messages and respond. One of many events the bot can listen for
         // https://discord.js.org/docs/packages/discord.js/14.14.1/Client:Class#messageCreate
         this.client.on('messageCreate', message => {
             if (message.author.bot) return; // Prevent the bot from responding to itself
+
+            console.log(message.content.substring(0,6));
+
+            if(message.content.substring(0, 6) === 'Prompt'){
+                this.fetchCompletion(message.content)
+                    .then(promptResponse => {
+                        this.sendMessage(promptResponse);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }else{
+                var messageObj = new Message(message.content, message.author.username);
         
-            var messageObj = new Message(message.content, message.author.username);
-        
-            console.log(`Received message: ${messageObj.content}`);
-            this.sendMessage('Automatic response! I like your message!');
+                console.log(`Received message: ${messageObj.content}`);
+                this.sendMessage('Automatic response! I like your message!');
+            }
+
+
         });
 
         this.client.on('messageReactionAdd', (reaction, user) => {
@@ -113,6 +128,16 @@ class DiscordBot {
         await this.channel.send(args)
     }
 
+    async fetchCompletion(prompt){
+        const completion = await openai.chat.completions.create({
+            messages: [{ role: "system", content: prompt }],
+            model: "gpt-3.5-turbo",
+          });
+        
+        console.log(completion.choices[0].message.content);
+
+        return completion.choices[0].message.content;
+    }
 }
 
 var bot = new DiscordBot();
