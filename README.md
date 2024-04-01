@@ -1,8 +1,6 @@
 # JS Discord Assignment
 
-This project is a demonstration of the Discord.js library for COMP2068, JS Frameworks. See a hosted version at [https://discordassignment.onrender.com/](https://discordassignment.onrender.com/)
-
-Render's free hosting speed leaves something to be desired, and the server will spin-down with inactivity. If the page load seems slow, please allow a minute for the server to spin back up. Subsequent requests should be faster.
+This project is a demonstration of the Discord.js library for COMP2068, JS Frameworks. See a hosted version at [https://pear-alert-toad.cyclic.app/](https://pear-alert-toad.cyclic.app/)
 
 ## Installation
 
