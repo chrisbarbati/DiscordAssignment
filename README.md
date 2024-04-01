@@ -1,6 +1,6 @@
 # JS Discord Assignment
 
-This project is a demonstration of the Discord.js library for COMP2068, JS Frameworks. See a hosted version at [https://pear-alert-toad.cyclic.app/](https://pear-alert-toad.cyclic.app/)
+This project is a demonstration of the Discord.js library for COMP2068, JS Frameworks. See a hosted version at [https://discordjsassignment.cyclic.app/](https://discordjsassignment.cyclic.app/)
 
 ## Installation
 
