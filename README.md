@@ -41,6 +41,8 @@ Allows you to view, edit, or delete existing scheduled messages.
 
 In addition to the functions above accessed through the menu, there are background functions running to demonstrate some other bot functionality. These include an auto-response from the bot when a message is sent, another auto-response when a user reacts to a cached message, and lastly and AI chat function that makes use of the OpenAI API. All messages (sent by users, not bots) that begin with "Prompt" are interpreted as an AI prompt and passed to a GPT, before the response is returned and sent to the chat by the bot.
 
+This code cannot be demonstrated with the hosted example, as this bot is configured not to respond to it's own messages. I recommend using your own API key and adding your implementation of the bot to a Discord server of your own to test this feature.
+
 For example:
 
 > "Prompt: Tell me a fact about penguins"
